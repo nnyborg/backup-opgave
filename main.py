@@ -3,7 +3,7 @@ import os
 # bruges til at kopiere filer i full backup og differential backup
 import shutil
 # bruges til at skrive timestamps i log
-import datetime
+from datetime import datetime
 # bruges til at sammenligne directories/filer, i differential backup
 import filecmp
 
