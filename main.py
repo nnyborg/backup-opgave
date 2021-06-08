@@ -17,9 +17,16 @@ selection = input("Select backup type: ")
 
 # metode der bruges til at logge når der tages backup
 def logging(a):
-    file = open('log.csv',mode='a+')
-    file.write('\n'+str(datetime.now())+','+a+','+source+','+destination)
-    file.close()
+    if os.path.exists('log.csv') is True:
+        file = open('log.csv',mode='a+')
+        file.write('\n'+str(datetime.now())+','+a+','+source+','+destination)
+        file.close()
+    # hvis log.csv ikke findes, oprettes en ny fil med header
+    elif os.path.exists('log.csv') is False:
+        file = open('log.csv',mode='a+')
+        file.write('TIME,MODE,SOURCE,DESTINATION')
+        file.write('\n'+str(datetime.now())+','+a+','+source+','+destination)
+        file.close()
 
 # full backup
 if selection == "1":
